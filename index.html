@@ -54,7 +54,7 @@
                 <h4 id="p1Label">\[P(1) = 0.5\]</h4>
                 <input type="range" autocomplete="off" min="0" max="1" value="0.5" step="0.01" class="slider Wave1slider" id="dataWaveProbability" oninput='updateProbabilitySlider(value); roundedProbability=Math.round( value * 100 + Number.EPSILON ) / 100; updateEntropy();' style="margin-left:10px" ondblclick="value = 0.5; updateProbabilitySlider(value)">
             </div>
-            <h4 id="EntropyLabel">\[ H = 0.50 = \sum_{i=0}^{m-1} = P(A_i) \cdot \log_2 \frac{1}{P(A_i)}\]</h4>
+            <h4 id="EntropyLabel">\[ H = 1.00 = \sum_{i=0}^{m-1} = P(A_i) \cdot \log_2 \frac{1}{P(A_i)}\]</h4>
         </div>
         <div>
             <div class="input-menu" onmouseover="displayAllTimePeriods = false" onmouseout="displayAllTimePeriods = false">
