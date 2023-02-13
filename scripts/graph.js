@@ -190,8 +190,15 @@ function displayTimePeriod(canvas) {
 
     let i;
     for (i=0; i<dataWave.data.length; i=i+dataWave.timePeriod) {
-        ctx.moveTo(i-1, height-DATA_WAVE_SCALING_FACTOR-2);
-        ctx.lineTo(i-1, height-2);
+
+        if (canvas.id == "inverseFourierCanvas") {
+            ctx.moveTo(i-1, height-DATA_WAVE_SCALING_FACTOR-110);
+            ctx.lineTo(i-1, height-2);
+        } else {
+            ctx.moveTo(i-1, height-DATA_WAVE_SCALING_FACTOR-2);
+            ctx.lineTo(i-1, height-2);
+        }
+
     }
     ctx.stroke();
     ctx.save();
