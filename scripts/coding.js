@@ -111,3 +111,43 @@ function bipolar(wave) {
     }
     return bipolarData;
 }
+
+/**
+ * Takes in a wave and returns the MLT-3 Coding of the wave
+ * Moves between -1 0 +1 0 on every high bit and remains constant on a zero bit
+ * @param {DataWave} wave 
+ */
+function MLT3(wave) {
+    let mltData = new Array(wave.data.length).fill(0);
+
+    let pattern = [0, 0.5, 1, 0.5];
+    let currentPatternPosition = 0;
+
+    for (i=0; i < wave.data.length; i=i+wave.timePeriod) {
+        if (wave.getPositionAtTime(i)) {
+            for (j=0; j < wave.timePeriod; j++) {
+                mltData[i+j] = pattern[Math.floor(currentPatternPosition%4)];
+            }
+            currentPatternPosition += 1;
+        } else {
+            for (j=0; j < wave.timePeriod; j++) {
+                mltData[i+j] = pattern[Math.floor(currentPatternPosition%4)];
+            }
+        }
+    }
+    return mltData;
+}
+
+function changeLineCoding(codingScheme, self) {
+    graphs[1].codingScheme = codingScheme;
+
+    let menuItems = document.getElementsByClassName('codingMenu');
+
+    for (let i = 0; i < menuItems.length; i++) {
+        menuItems[i].classList.add('notSelected');
+    }
+    self.classList.remove('notSelected');
+
+    dataWave.codingScheme = codingScheme;
+    dataWave.generateFourierData();
+}

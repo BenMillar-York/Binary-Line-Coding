@@ -25,25 +25,31 @@
         <br>
     </div>
     <div>
-        <div class="wave-menu"><h3>NRZ-M</h3><h4>Non-return-to-zero mark</h4></div>
-        <canvas onMouseOver="this.displayTimePeriod = true" onmouseout="this.displayTimePeriod = false" id="nrzmCodingCanvas"></canvas>
+        <div class="menu">
+        <div class="wave-menu codingMenu" onmouseup="changeLineCoding('nrzm', this)"><h3>NRZ–M</h3><h4>Non-return-to-zero mark</h4></div>
+        <div class="wave-menu codingMenu notSelected" onmouseup="changeLineCoding('rtz', this)"><h3>RZ<h3><h4>Return to zero</h4></div>
+        <div class="wave-menu codingMenu notSelected" onmouseup="changeLineCoding('manchester', this)"><h3>Biphase–L</h3><h4>Manchester coding</h4></div>
+        <div class="wave-menu codingMenu notSelected" onmouseup="changeLineCoding('bipolar', this)"><h3>Bipolar</h3><h4>Duobinary signal</h4></div>
+        <div class="wave-menu codingMenu notSelected" onmouseup="changeLineCoding('mlt3', this)"><h3>MTL-3</h3><h4>Multi-Level Transmit</h4></div>
+        </div>
+        <canvas onMouseOver="this.displayTimePeriod = true" onmouseout="this.displayTimePeriod = false" id="codingCanvas"></canvas>
         <br>
     </div>
     <div>
-        <div class="wave-menu"><h3>RZ</h3><h4>Return to zero</h4></div>
-        <canvas onMouseOver="this.displayTimePeriod = true" onmouseout="this.displayTimePeriod = false" id="rtzCodingCanvas"></canvas>
+        <div class="wave-menu"><h3>Spectral Density</h3><h4></h4></div>
+        <canvas onMouseOver="this.displayTimePeriod = true" onmouseout="this.displayTimePeriod = false" id="fourierCanvas"></canvas>
         <br>
     </div>
     <div>
-        <div class="wave-menu"><h3>Biphase–L</h3><h4>Manchester coding</h4></div>
-        <canvas onMouseOver="this.displayTimePeriod = true" onmouseout="this.displayTimePeriod = false" id="manchesterCodingCanvas"></canvas>
+        <div class="wave-menu"><h3>Inverse Fourier</h3><h4></h4></div>
+        <canvas onMouseOver="this.displayTimePeriod = true" onmouseout="this.displayTimePeriod = false" id="inverseFourierCanvas"></canvas>
         <br>
     </div>
-    <div>
+    <!--<div>
         <div class="wave-menu"><h3>Bipolar</h3><h4>Duobinary signal</h4></div>
         <canvas onMouseOver="this.displayTimePeriod = true" onmouseout="this.displayTimePeriod = false" id="bipolarCodingCanvas"></canvas>
         <br>
-    </div>
+    </div>-->
 
     <br>
 

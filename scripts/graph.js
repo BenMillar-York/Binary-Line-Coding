@@ -127,6 +127,10 @@ function updateGraph(graph) {
     graph.canvas.width = window.innerWidth;
     graph.canvas.height = window.innerHeight/10;
 
+    if (graph.codingScheme == "inverseFourier") {
+        graph.canvas.height = window.innerHeight/5;
+    }
+
     var context = graph.canvas.getContext("2d");
 
     context.clearRect(0, 0, graph.canvas.width, graph.canvas.height);
@@ -144,31 +148,30 @@ function updateGraph(graph) {
     context.restore();
 }
 
-let graphs = [
-    {
-        canvas: document.getElementById("canvas"),
-        codingScheme: null
-    },
-    {
-        canvas: document.getElementById("rtzCodingCanvas"),
-        codingScheme: "rtz"
-    },
-    {
-        canvas: document.getElementById("manchesterCodingCanvas"),
-        codingScheme: "manchester"
-    },
-    {
-        canvas: document.getElementById("nrzmCodingCanvas"),
-        codingScheme: "nrzm"
-    },
-    {
-        canvas: document.getElementById("bipolarCodingCanvas"),
-        codingScheme: "bipolar"
-    }]
+let codingSchemes = [null, "rtz", "manchester", "nrzm", "bipolar"]
+
+graphs = [{
+    canvas: document.getElementById('canvas'),
+    codingScheme: null
+},
+{
+    canvas: document.getElementById('codingCanvas'),
+    codingScheme: "nrzm"
+},
+{
+    canvas: document.getElementById('fourierCanvas'),
+    codingScheme: "fourier"
+},
+{
+    canvas: document.getElementById('inverseFourierCanvas'),
+    codingScheme: "inverseFourier"
+}]
 
 function updateGraphs() {
 
-    graphs.forEach(updateGraph)
+    graphs.forEach(graph => {
+        updateGraph(graph);
+    })
 
     window.requestAnimationFrame(updateGraphs);
     position += 0.03;

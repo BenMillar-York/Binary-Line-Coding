@@ -11,6 +11,7 @@ body {
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+    overflow: hidden;
 }
 
 .input-menu {
@@ -56,7 +57,7 @@ h4 {
     flex-direction: row;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: white;
-    justify-content: center;
+    justify-content: left;
     cursor: default;
 }
 
@@ -83,6 +84,9 @@ h4 {
 .wave-menu {
     display: flex;
     flex-direction: row;
+    margin-right: 5vw;
+    margin-left: 0.5vw;
+    margin-top: 1vh;
 }
 
 .gui {
@@ -99,6 +103,10 @@ h4 {
     margin-right: 3vw;
     font-size: 40px;
     color:#d3d3d3;
+}
+
+.notSelected {
+    opacity: 0.3;
 }
 
 h1 {

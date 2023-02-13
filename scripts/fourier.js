@@ -5,7 +5,7 @@ let fourierData = [];
 function discreteFourierTransform(data) {
     // Computes the Fourier Transform in O(N^2) rather than O(N logN)
     const numDataPoints = data.length;
-    let freqArray = Array(data.length)
+    let freqArray = Array(data.length).fill(0);
 
     for (let frequency = 0; frequency < numDataPoints; frequency++) {
 
@@ -29,5 +29,21 @@ function discreteFourierTransform(data) {
         freqArray[frequency] = frequencySignal;
     }
     return freqArray;
+}
+
+// Param: freqArray - An array of Complex Numbers
+// Return: timeArray - An array of Y Coordinates
+function inverseFourierTransform(freqArray) {
+    const N = freqArray.length;
+    let timeArray = Array(N).fill(0);
+  
+    for (let k = 0; k < N; k++) {
+        for (let n = 0; n < N; n++) {
+            timeArray[k] += freqArray[n].magnitude * Math.cos(2 * Math.PI * k * n / N) + freqArray[n].magnitude * Math.sin(2 * Math.PI * k * n / N);
+        }
+        timeArray[k] = timeArray[k] / N;
+    }
+  
+    return timeArray;
 }
     

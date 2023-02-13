@@ -66,6 +66,9 @@ class DataWave {
         this.manchesterData = [];
         this.nrzmData = [];
         this.bipolarData = [];
+        this.fourierData = [];
+        this.codingScheme = null;
+        this.currentCodingSchemeData = this.nrzmData;
     }
 
     generateData() {
@@ -84,6 +87,19 @@ class DataWave {
         this.manchesterData = manchester(this);
         this.nrzmData = nrzm(this);
         this.bipolarData = bipolar(this);
+        this.mltData = MLT3(this);
+        this.generateFourierData();
+    }
+
+    generateFourierData() {
+        if (this.codingScheme == null) { this.currentCodingSchemeData = this.data;}
+        if (this.codingScheme == "rtz") { this.currentCodingSchemeData = this.returnToZeroData;}
+        if (this.codingScheme == "manchester") { this.currentCodingSchemeData = this.manchesterData;}
+        if (this.codingScheme == "nrzm") { this.currentCodingSchemeData = this.nrzmData;}
+        if (this.codingScheme == "bipolar") { this.currentCodingSchemeData = this.bipolarData;}
+        if (this.codingScheme == "mlt3") { this.currentCodingSchemeData = this.mltData;}
+        this.fourierData = discreteFourierTransform(this.currentCodingSchemeData);
+        this.inverseFourierData = inverseFourierTransform(this.fourierData);
     }
 
     regenerateDataWithNewTimePeriod(newTimePeriod) {
@@ -113,6 +129,9 @@ class DataWave {
         if (coding == "manchester") { return this.manchesterData[time];}
         if (coding == "nrzm") { return this.nrzmData[time];}
         if (coding == "bipolar") { return this.bipolarData[time];}
+        if (coding == "mlt3") { return this.mltData[time];}
+        if (coding == "fourier") { return this.fourierData[time].magnitude;}
+        if (coding == "inverseFourier") { return this.inverseFourierData[time] * 800 + 1;}
         
     }
 
