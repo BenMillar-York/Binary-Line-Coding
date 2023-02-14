@@ -38,7 +38,7 @@ function inverseFourierTransform(freqArray) {
     let timeArray = Array(N).fill(0);
   
     for (let k = 0; k < N; k++) {
-        for (let n = 1; n < N; n++) {
+        for (let n = 0; n < N; n++) {
             timeArray[k] += freqArray[n].magnitude * Math.cos(2 * Math.PI * k * n / N) + freqArray[n].magnitude * Math.sin(2 * Math.PI * k * n / N);
         }
         timeArray[k] = timeArray[k] / N;
