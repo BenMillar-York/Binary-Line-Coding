@@ -36,8 +36,8 @@ function discreteFourierTransform(data) {
 
 /**
  * Computes the IDFT of array of Complex numbers
- * @param {Array} data - An array of Y Coordinates.
- * @returns {Array} freqArray, an array of Complex numbers
+ * @param {Array} freqArray - An array of Complex Numbers
+ * @returns {Array} timeArray, an array of Complex numbers
  */
 function inverseFourierTransform(freqArray) {
     const N = freqArray.length;
