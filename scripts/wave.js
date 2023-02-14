@@ -131,7 +131,7 @@ class DataWave {
         if (coding == "bipolar") { return this.bipolarData[time];}
         if (coding == "mlt3") { return this.mltData[time];}
         if (coding == "fourier") { return this.fourierData[time].magnitude;}
-        if (coding == "inverseFourier") { return this.inverseFourierData[time] * 800 + 1;}
+        if (coding == "inverseFourier") { return this.inverseFourierData[time].magnitude * 800 + 1;}
         
     }
 
